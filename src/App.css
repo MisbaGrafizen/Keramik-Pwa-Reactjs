@@ -361,3 +361,19 @@
   -webkit-backdrop-filter: blur(7.7px);
   border: 1px solid rgba(255, 255, 255, 0.77);
 }
+
+
+
+
+.transition-container {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.transition-container.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
