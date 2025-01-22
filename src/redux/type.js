@@ -1,0 +1,29 @@
+//Product Management
+export const GET_CATEGORY = "GET_CATEGORY";
+export const GET_SUBCATEGORY = "GET_SUBCATEGORY";
+export const ADD_CATEGORY = "ADD_CATEGORY";
+export const ADD_SUBCATEGORY = "ADD_SUBCATEGORY";
+export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
+export const UPDATE_METAL = "UPDATE_METAL";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const DELETE_METAL = "DELETE_METAL";
+export const RESET_GLOBAL_STATE = "RESET_GLOBAL_STATE";
+export const GET_PRODUCT = "GET_PRODUCT";
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const DELETE_CATEGORY = "DELETE_CATEGORY";
+export const GET_PRODUCT_IMAGE = "GET_PRODUCT_IMAGE";
+export const DELETE_GROUP_ITEM = "DELETE_GROUP_ITEM";
+export const UPDATE_GROUP_ITEM = "UPDATE_GROUP_ITEM";
+export const ADD_PRODUCT_IMAGE = "ADD_PRODUCT_IMAGE";
+
+
+//User Management
+
+export const GET_USERS = "GET_USERS";
+export const ADD_ABOUT_US = "ADD_ABOUT_US";
+export const GET_CONTACT_US = "GET_CONTACT_US";
+export const LOGIN_ADMIN = "LOGIN_ADMIN";
+export const UPDATE_USER = "UPDATE_USER";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const GET_CUSTOMERS = "GET_CUSTOMERS";
+export const GET_COMPANY_INFO = "GET_COMPANY_INFO";
