@@ -48,6 +48,7 @@ const handleSubcategoryClick = async (subcategoryId) => {
 
 
 const handleViewImage = (productId) => {
+  console.log('productId', productId)
   navigate("/image", { state: { productId } });
 };
 
@@ -56,7 +57,7 @@ const handleViewImage = (productId) => {
     setCaratModalOpen(false);
   };
 
-  console.log('categories', categories)
+  console.log('products', products)
 
   const [currentStep, setCurrentStep] = useState("size");
 

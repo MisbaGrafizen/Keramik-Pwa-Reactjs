@@ -3,14 +3,14 @@ import Preloader from "../../src/Component/Preloader";
 import { useLocation } from "react-router-dom";
 import { ApiGet } from "../helper/axios";
 
-export default function PdfPage() {
+export default function ImagePage() {
   const location = useLocation();
   const { productId } = location.state || {};
-  const [pdfUrl, setPdfUrl] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]); // Updated to handle multiple images
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPdf = async () => {
+    const fetchImages = async () => {
       if (!productId) {
         setLoading(false);
         return;
@@ -21,42 +21,44 @@ export default function PdfPage() {
         console.log("response", response);
 
         if (response?.data?.length > 0) {
-          setPdfUrl(response.data[0].file); // Use the first PDF URL
+          const urls = response.data.map((item) => item.file); // Extract image URLs
+          setImageUrls(urls);
         } else {
-          console.error("No PDF file found for the product");
+          console.error("No images found for the product");
         }
       } catch (error) {
-        console.error("Error fetching PDF:", error);
+        console.error("Error fetching images:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchPdf();
+    fetchImages();
   }, [productId]);
+
+  console.log('imageUrls', imageUrls);
 
   return (
     <>
       {loading ? (
         <Preloader />
-      ) : pdfUrl ? (
-        <div className="flex flex-col items-center w-full h-screen">
-          <object
-            data={pdfUrl}
-            type="application/pdf"
-            className="w-full h-[90vh] md:w-[80%] md:h-[85vh] border"
-          >
-            <p className="text-center text-gray-500">
-              It seems your browser doesn’t support embedded PDFs. You can{" "}
-              <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
-                download the PDF
-              </a>{" "}
-              instead.
-            </p>
-          </object>
+      ) : imageUrls.length > 0 ? (
+        <div className="flex flex-wrap justify-center  flex-col items-center w-full h-screen gap-4 p-4">
+          {imageUrls.map((url, index) => (
+            <div  
+              key={index}
+              className="relative w-[300px] flex flex-col h-[300px] overflow-hidden rounded-md shadow-md"
+            >
+              <img
+                src={url}
+                alt={`Product Image ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500">No PDF found for this product.</p>
+        <p className="text-center text-gray-500">No images found for this product.</p>
       )}
     </>
   );
