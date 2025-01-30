@@ -125,7 +125,7 @@ const handleViewImage = (productId) => {
                     <button
                       key={index}
                       onClick={() => handleSubcategoryClick(category._id)}
-                      className="flex w-[148px] px-[10px]  gap-[10px] font-Poppins bg-white text-[#000] mx-auto rounded-[7px] py-[8px]  border-[1px] border-[#fff]"
+                      className="flex w-fit px-[10px]  gap-[10px] font-Poppins bg-white text-[#000]  rounded-[7px] py-[8px]  border-[1px] border-[#fff]"
                     >
                       <b className=" flex font-Poppins  font-[600]">
                         {index + 1}
@@ -164,7 +164,7 @@ const handleViewImage = (productId) => {
                     <button
                       key={index}
                       onClick={() => handleViewImage(product._id)}
-                      className="flex w-[148px] px-[10px]  gap-[10px] font-Poppins bg-white text-[#000] mx-auto rounded-[7px] py-[8px]  border-[1px] border-[#fff]"
+                      className="flex w-fit px-[10px]  gap-[10px] font-Poppins bg-white text-[#000] mx-auto rounded-[7px] py-[8px]  border-[1px] border-[#fff]"
                     >
                       <b className=" flex font-Poppins  font-[600]">
                         {index + 1}
