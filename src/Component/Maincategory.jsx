@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Modal as NextUIModal, ModalContent} from "@nextui-org/react";
+import { Modal as NextUIModal, ModalContent } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategroyAction } from "../redux/action/landingManagement";
@@ -15,43 +15,43 @@ export default function MainCategory() {
   const [products, setProducts] = useState([]);
 
 
-const navigate =useNavigate();
-const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-const categories = useSelector((state) => state.landing.getAllCategory);
+  const categories = useSelector((state) => state.landing.getAllCategory);
 
-useEffect(() => {
-  dispatch(getCategroyAction());
-}, [dispatch]);
-
-
-const handleCategoryClick = async (categoryId) => {
-  setSelectedCategoryId(categoryId);
-  try {
-    const response = await dispatch(getSubcategoriesByCategoryAction(categoryId)); 
-    setSubcategories(response); 
-    setCaratModalOpen(true);
-  } catch (error) {
-    console.error("Error fetching subcategories:", error);
-  }
-};
-
-const handleSubcategoryClick = async (subcategoryId) => {
-  setSelectedSubcategoryId(subcategoryId);
-  try {
-    const response = await dispatch(getProductBySubCategoryAction(subcategoryId));
-    setProducts(response);
-    setCurrentStep("tiles");   
-  } catch (error) {
-    console.error("Error fetching products:", error);
-  }
-};
+  useEffect(() => {
+    dispatch(getCategroyAction());
+  }, [dispatch]);
 
 
-const handleViewImage = (productId) => {
-  console.log('productId', productId)
-  navigate("/image", { state: { productId } });
-};
+  const handleCategoryClick = async (categoryId) => {
+    setSelectedCategoryId(categoryId);
+    try {
+      const response = await dispatch(getSubcategoriesByCategoryAction(categoryId));
+      setSubcategories(response);
+      setCaratModalOpen(true);
+    } catch (error) {
+      console.error("Error fetching subcategories:", error);
+    }
+  };
+
+  const handleSubcategoryClick = async (subcategoryId) => {
+    setSelectedSubcategoryId(subcategoryId);
+    try {
+      const response = await dispatch(getProductBySubCategoryAction(subcategoryId));
+      setProducts(response);
+      setCurrentStep("tiles");
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+
+  const handleViewImage = (productId) => {
+    console.log('productId', productId)
+    navigate("/image", { state: { productId } });
+  };
 
 
   const handleModalClose = () => {
@@ -69,20 +69,20 @@ const handleViewImage = (productId) => {
         <div className="grid grid-cols-2 gap-[15px] w-[100%] mx-auto">
           {categories.map((category, index) => (
             <>
-            <div className="  rounded-[7px] flex relative ">
+              <div className="  rounded-[7px] flex relative "     onClick={() => handleCategoryClick(category._id)}>
 
-    <img className=" flex w-[100%] rounded-[7px]   object-cover h-[180px]" src={category?.image} />
-       
-            <button
-              key={index}
-              onClick={() => handleCategoryClick(category._id)}
-              className="flex w-[100%] px-[10px]  gap-[10px] bottom-0 button111  absolute font-Poppins bg-white text-[#fff] mx-auto rounded-[7px] py-[8px]  border-t-[1px] border-[#fff]"
-            >
-              <b className=" flex font-Poppins  font-[600]">{index + 1}</b>
-              <span className=" flex h-[19px] w-[1.9px] bg-[#fff]"></span>{" "}
-              {category?.name}
-            </button>
-            </div>
+                <img className=" flex w-[100%] rounded-[7px]   object-cover h-[180px]" src={category?.image} />
+
+                <button
+                  key={index}
+              
+                  className="flex w-[100%] px-[10px]  gap-[10px] bottom-0 button111  absolute font-Poppins bg-white text-[#fff] mx-auto rounded-[7px] py-[8px]  border-t-[1px] border-[#fff]"
+                >
+                  <b className=" flex font-Poppins  font-[600]">{index + 1}</b>
+                  <span className=" flex h-[19px] w-[1.9px] bg-[#fff]"></span>{" "}
+                  {category?.name}
+                </button>
+              </div>
 
             </>
           ))}
@@ -100,7 +100,7 @@ const handleViewImage = (productId) => {
             </div>
             {currentStep === "size" && (
               <div className="relative w-[100%] h-[100%]">
-                <div className= {`  w-[100%] flex flex-col transition-container ${currentStep === "size" ? "active" : ""}`}>
+                <div className={`  w-[100%] flex flex-col transition-container ${currentStep === "size" ? "active" : ""}`}>
                   <div className="flex flex-col mt-[10px]">
                     <div className="mx-auto text-[#ffffff] justify-center flex text-[23px] font-[500] font-Poppins">
                       <p>Please Select Size</p>
