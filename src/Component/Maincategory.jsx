@@ -71,7 +71,7 @@ const handleViewImage = (productId) => {
             <>
             <div className="  rounded-[7px] flex relative ">
 
-    <img className=" flex w-[100%] rounded-[7px]   object-cover h-[180px]" src={img1} />
+    <img className=" flex w-[100%] rounded-[7px]   object-cover h-[180px]" src={category?.image} />
        
             <button
               key={index}
