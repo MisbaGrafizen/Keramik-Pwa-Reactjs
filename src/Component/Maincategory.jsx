@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategroyAction } from "../redux/action/landingManagement";
 import { getSubcategoriesByCategoryAction } from "../redux/action/landingManagement";
 import { getProductBySubCategoryAction } from "../redux/action/landingManagement";
+import img1 from "../../public/imges/login-bg.png"
 
 export default function MainCategory() {
   const [caratModalOpen, setCaratModalOpen] = useState(false);
@@ -67,15 +68,23 @@ const handleViewImage = (productId) => {
       <div className="flex w-[100%]  pt-[120px] px-[20px]">
         <div className="grid grid-cols-2 gap-[15px] w-[100%] mx-auto">
           {categories.map((category, index) => (
+            <>
+            <div className="  rounded-[7px] flex relative ">
+
+    <img className=" flex w-[100%] rounded-[7px]   object-cover h-[180px]" src={img1} />
+       
             <button
               key={index}
               onClick={() => handleCategoryClick(category._id)}
-              className="flex w-[170px] px-[10px]  gap-[10px] font-Poppins bg-white text-[#000] mx-auto rounded-[7px] py-[8px]  border-[1px] border-[#fff]"
+              className="flex w-[100%] px-[10px]  gap-[10px] bottom-0 button111  absolute font-Poppins bg-white text-[#fff] mx-auto rounded-[7px] py-[8px]  border-t-[1px] border-[#fff]"
             >
               <b className=" flex font-Poppins  font-[600]">{index + 1}</b>
-              <span className=" flex h-[19px] w-[1.9px] bg-[#000]"></span>{" "}
+              <span className=" flex h-[19px] w-[1.9px] bg-[#fff]"></span>{" "}
               {category?.name}
             </button>
+            </div>
+
+            </>
           ))}
         </div>
       </div>
